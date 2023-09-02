@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>ETM Info</h2>
+    <form method="POST">
+        {% if not etm_info_exists %}
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- Display the employee_id for reference -->
+        <p>Your Employee ID: {{ request.user.employee_id }}</p>
+
+        <a href="path_to_agreement_document">Read Our Terms Of Service</a>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {% else %}
+        <h3>Nothing to show here!</h3>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
